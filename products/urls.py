@@ -6,5 +6,5 @@ app_name = 'Product'
 
 urlpatterns = [
     path('', ProductList.as_view(), name='product_list'),
-    path('<int:id>' , ProductDetail.as_view(), name='product_detail'),
+    path('<int:pk>' , ProductDetail.as_view(), name='product_detail'),
 ]
