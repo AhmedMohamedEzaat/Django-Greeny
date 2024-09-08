@@ -1,13 +1,10 @@
 {% extends "base.html" %}
 
-
 {% load static %}
 
 
-
-
 {% block css %}
-<link rel="stylesheet" href="{%static 'css/product-details.css'%}">
+    <link rel="stylesheet" href="{% static "css/product-details.css" %} ">
 {% endblock css %}
 
 
@@ -49,6 +46,7 @@
                                 {% for image in object.product_image.all %}
                                     <li><img src="{{image.image.url}}" alt="product"></li>
                                 {% endfor %}
+                                
                             </ul>
                             <ul class="details-thumb">
                                 {% for image in object.product_image.all %}
