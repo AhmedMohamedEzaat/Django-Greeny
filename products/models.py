@@ -46,6 +46,7 @@ class ProductsImages(models.Model):
 class Brand(models.Model):
     name = models.CharField(_("Name"), max_length=50)
     img = models.ImageField(_("Image"), upload_to="brands/"  ,null=True,  blank=True)
+    category =models.ForeignKey('Category', related_name='brand_Category' ,on_delete=models.SET_NULL,null=True,blank=True)
 
     def __str__(self):
         return self.name
