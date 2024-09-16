@@ -2,18 +2,18 @@ System :
     - products
     - account [activation,email]
     - orders , track order
-    - conpons
+    - coupons
     - payments
     - dashboard
     -----------------------------
     - celery , redis
     - cashing
-    - optnization
+    - optimization
     - django command
     - translation
     - ajax
     - docker
-    - deploy [herocu - aws]
+    - deploy [Heroku - aws]
     -----------------------------
     - api
     - docs
@@ -29,12 +29,12 @@ products :
     - price
     - flag [new-sale-festure] dropdown
     - quanitity
-    - reviwes        * [user_id,product_id,reat[0:5],feedback,datetime]
+    - reviews        * [user_id,product_id,reat[0:5],feedback,datetime]
     - category       * [name,img]
 
 
 order :
-    -ststus [recieved,processed,shipped,delivered]
+    -status [received,processed,shipped,delivered]
     - user
     - id 
     - total items
@@ -55,7 +55,7 @@ User :
     - name
     - email
     - image
-    - phone_numper *
+    - phone_number *
 ------------------------------
 
 

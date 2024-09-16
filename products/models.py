@@ -5,6 +5,8 @@ from django.utils import timezone
 from django.core.validators import MinValueValidator , MaxValueValidator
 from taggit.managers import TaggableManager
 from django.utils.text import slugify
+from django.db.models.aggregates import Avg 
+
 
 
 FLAG_OPTION=(
@@ -23,7 +25,7 @@ class Product(models.Model):
     image = models.ImageField(upload_to='products/')
     flag = models.CharField(_("Flag"),max_length=10 ,choices=FLAG_OPTION)
     quantity = models.IntegerField(_("Quantity"))
-    brand =models.ForeignKey('Brand', related_name='Product_Brand' ,on_delete=models.SET_NULL,null=True,blank=True)
+    brand =models.ForeignKey('Brand', related_name='product_brand' ,on_delete=models.SET_NULL,null=True,blank=True)
     category =models.ForeignKey('Category', related_name='Product_Category' ,on_delete=models.SET_NULL,null=True,blank=True)
     tags = TaggableManager()
     slug = models.SlugField(null=True , blank=True)
@@ -34,6 +36,12 @@ class Product(models.Model):
     def save(self, *args, **kwargs):
        self.slug = slugify(self.name)
        super(Product, self).save(*args, **kwargs) # Call the real save() method
+    
+    
+    def avg_review(self):
+        avg = self.product_review.aggregate(avg = Avg('rate') )
+        return avg
+    
     
 
 class ProductsImages(models.Model):
