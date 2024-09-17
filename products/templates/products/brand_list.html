@@ -48,7 +48,7 @@
                                     <option value="*">show all</option>
 
                                     {% for category in categories %}
-                                    <option value="{{category}}">{{category}}</option>
+                                    <option value=".{{category|cut:' '}}">{{category}}</option>
                                     {% endfor %}
                                     
                                     
@@ -61,7 +61,7 @@
                 <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 isotope-items">
 
                     {% for brand in brand_list %}
-                        <div class="col all {{brand.category}}">
+                        <div class="col all {{brand.category|cut:' '}}">
                             <div class="brand-wrap">
                                 <div class="brand-media">
                                     <img src=" {{brand.image.url}} " alt=" brand ">

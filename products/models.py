@@ -43,7 +43,6 @@ class Product(models.Model):
         return avg
     
     
-
 class ProductsImages(models.Model):
     product = models.ForeignKey(Product , related_name='product_image', on_delete=models.CASCADE) 
     image = models.ImageField(upload_to='product_images/')
