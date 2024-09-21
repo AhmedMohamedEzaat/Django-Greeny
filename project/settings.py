@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'taggit', 
     "debug_toolbar",
     'rest_framework',
+    'rest_framework.authtoken',
+    'rest_framework_simplejwt',
+    
     
     'accounts',
     'orders',
@@ -124,6 +127,7 @@ USE_I18N = True
 
 USE_TZ = True
 
+LOCALE_PATHS = [BASE_DIR / "locale"]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
@@ -152,5 +156,17 @@ INTERNAL_IPS = [
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
-    'PAGE_SIZE': 20
+    'PAGE_SIZE': 20 ,
+    
+    
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+    #   'rest_framework.authentication.TokenAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ]
+    
 }
+
+
+# REST_FRAMEWORK = {
+#     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+# }

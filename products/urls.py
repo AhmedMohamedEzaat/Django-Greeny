@@ -1,9 +1,14 @@
-from django.urls import path
+from django.urls import path , include
 from .views import ProductList , ProductDetail , BrandList , BrandDetail , CategoryList ,product_list
-from .api import  ProductList ,ProductDetail
+from .api import  BrandDetailAPI,BrandListAPI,CategoryDetailAPI,CategoryListAPI,ProductDetailAPI,ProductListAPI , ProductViewSets
 # product_list_api , product_detail ,
 
+from rest_framework import routers
 
+router = routers.DefaultRouter()
+router.register('myproducts',ProductViewSets)
+ 
+ 
 
 app_name = 'Product'
 
@@ -22,8 +27,14 @@ urlpatterns = [
     # path('api/list/<int:id>', product_detail),
     
     
-    path('api/list/cbv',ProductList.as_view()),
-    path('api/list/cbv/<int:pk>',ProductDetail.as_view()),
+    path('api/list/cbv/',ProductListAPI.as_view()),
+    path('api/list/cbv/<int:pk>',ProductDetailAPI.as_view()),
+    path('api/category',CategoryListAPI.as_view()),
+    path('api/category/<int:pk>', CategoryDetailAPI.as_view()),
+    path('api/brand',BrandListAPI.as_view()),
+    path('api/brand/<int:pk>', BrandDetailAPI.as_view()),
+
+    path('myapi/',include(router.urls))
 
 ]
 
